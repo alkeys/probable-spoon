@@ -3,15 +3,25 @@
 
 
 
-<template>
-  <div>
-    <p>{{ nombre }}</p>
-    <div class="q-pa-md" style="outline: 2px solid black; max-width: 200px">
-      <q-option-group :options="options" type="checkbox" v-model="group" />
-    </div>
 
-  </div>
+
+
+<template>
+  <q-card class="" style="background-color: #fffffe;color: #2e2f3e;margin-top: 3vh
+;max-width: 30vh">
+    <div>
+      {{nombre}}
+      <q-option-group
+        v-model="group"
+        :options="options"
+        color="green"
+        type="checkbox"
+      />
+    </div>
+  </q-card>
+
 </template>
+
 
 <script>
 import { ref } from 'vue';

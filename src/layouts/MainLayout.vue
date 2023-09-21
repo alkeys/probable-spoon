@@ -2,30 +2,14 @@
   <q-layout view="hHh lpR lFf">
 
     <q-header elevated class="bg-primary text-white">
-    <q-toolbar>
+      <q-toolbar>
 
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"/>
 
         <div class="flex flex-center">
-          <q-toolbar-title>
-            <q-avatar>
-              <img
-                src="https://png.pngtree.com/png-clipart/20221001/original/pngtree-smartphone-online-shop-logo-design-with-click-icon-png-image_8647135.png">
-            </q-avatar>
-            Tienda Online
-
-          </q-toolbar-title>
+          <titulo-ico></titulo-ico>
           <BarraBusqueda></BarraBusqueda>
-          <div class="flex flex-center q-ma-lg" >
-            <BotonPro style="padding: 5px" nombre="Inicio"  tipo-icono="navigation"></BotonPro>
-            <BotonPro nombre="Estadisticas"></BotonPro>
-          </div>
-
-          <div class="flex flex-center q-ma-lg ">
-            <BotonPro style="padding: 5px" nombre="" tipo-icono="edit_location"></BotonPro>
-            <BotonPro nombre="" tipo-icono="local_grocery_store"></BotonPro>
-          </div>
-
+          <botones-utilies></botones-utilies>
         </div>
 
 
@@ -33,21 +17,21 @@
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-   <obciones-drawer></obciones-drawer>
+      <drawer-desicion></drawer-desicion>
     </q-drawer>
 
     <q-page-container>
       <router-view/>
     </q-page-container>
 
-    <q-footer elevated class="bg-grey-8 text-white">
+    <q-footer elevated class="bg-primary text-white " :justify="'center'">
       <q-toolbar>
-     <BotonesFooters nombre="<"></BotonesFooters>
-        <div v-for="numero in 8" :key="numero"><BotonesFooters :nombre="numero"></BotonesFooters></div>
-        <BotonesFooters nombre=">"></BotonesFooters>
-        <div>
-          <articulo-p-agina></articulo-p-agina>
-        </div>
+
+        <borones-grupo nombres="<123456789>">
+        </borones-grupo>
+
+        <articulo-p-agina></articulo-p-agina>
+
       </q-toolbar>
     </q-footer>
 
@@ -57,14 +41,18 @@
 <script>
 import {ref} from 'vue'
 import BarraBusqueda from "components/barraBusqueda.vue";
-import BotonPro from "components/BotonPro.vue";
-import BotonesFooters from "components/footersPro/BotonesFooters.vue";
+import BotonPro from "components/botones/BotonPro.vue";
+
 import ArticuloPAgina from "components/footersPro/articuloPAgina.vue";
 import ObcionesDrawer from "pages/obcionesDrawer.vue";
+import BoronesGrupo from "components/botones/botonesGrupo.vue";
+import BotonesUtilies from "components/botonesUtilies.vue";
+import TituloIco from "components/tituloIco.vue";
+import DrawerDesicion from "pages/drawerDesicion.vue";
 
 
 export default {
-  components: {ObcionesDrawer, ArticuloPAgina, BotonesFooters, BotonPro, BarraBusqueda},
+  components: {DrawerDesicion, TituloIco, BotonesUtilies, BoronesGrupo, ArticuloPAgina, BarraBusqueda},
   setup() {
     const leftDrawerOpen = ref(false)
 

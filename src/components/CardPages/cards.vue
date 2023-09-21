@@ -6,14 +6,14 @@
 <template>
 
     <div class="q-gutter-md q-mb-md text-center " style="width: 100%; padding: 1vh">
-      <q-card class="q-mb-md ">
+      <q-card class="q-mb-md " style="background-color: #fffffe">
         <q-img :src="urlImg" class="q-pa-md" style="height: 30vh;">
           <div class="absolute-bottom text-h6">
             {{ title }}
           </div>
         </q-img>
         <q-card-section>
-          <p>{{ precio }}</p>
+          <p style="color: #2e2f3e">{{ precio }}</p>
           {{ data }}
         </q-card-section>
       </q-card>

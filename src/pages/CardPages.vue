@@ -7,11 +7,14 @@
   <q-page >
     <div class="row">
       <div class="col-6 col-sm-3 text-center" v-for="(card, i) in cardsData" :key="i">
-        <CardsImg :title="card.title" :data="card.data" :precio="card.precio" :urlImg="card.urlImg" />
+        <CardsImg  class="mobi" :title="card.title" :data="card.data" :precio="card.precio" :urlImg="card.urlImg" />
       </div>
     </div>
   </q-page>
 </template>
+
+
+
 
 <script>
 import CardsImg from "components/CardPages/cards.vue";

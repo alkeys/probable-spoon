@@ -5,10 +5,13 @@ import CardPages from "pages/CardPages.vue";
 </script>
 
 <template>
-<FilterPages></FilterPages>
-  <CardPages></CardPages>
+  <FilterPages></FilterPages>
+  <CardPages class="mobi"></CardPages>
+
 </template>
 
 <style scoped>
+
+
 
 </style>
