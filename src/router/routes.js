@@ -12,6 +12,15 @@ const routes = [
       { path: '', component: () => import('pages/pagesPrincipal.vue') },
     ]
   },
+  {
+    path: '/',
+    component: () => import('layouts/MainLayout2.vue'),
+    children: [
+      { path: 'ventascelulares', component: () => import('pages/VentaCelulares.vue') },
+      { path: 'nuevoanuncio', component: () => import('pages/NuevoAnuncio.vue') },
+    ]
+  },
+
 
   // Always leave this as last one,
   // but you can also remove it

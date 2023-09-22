@@ -1,13 +1,13 @@
 
 
 
-<!--
+<!-- en esta cosa se resive para las card de los anuncios
 <div class="q-pa-md row items-start q-gutter-md text-center">-->
 <template>
 
     <div class="q-gutter-md q-mb-md text-center " style="width: 100%; padding: 1vh">
-      <q-card class="q-mb-md " style="background-color: #fffffe">
-        <q-img :src="urlImg" class="q-pa-md" style="height: 30vh;">
+      <q-card class="q-mb-md " style="background-color: #fffffe" @click="hacerAlgo(title)" >
+        <q-img :src="urlImg" class="q-pa-md " style="height: 30vh;object-fit: cover">
           <div class="absolute-bottom text-h6">
             {{ title }}
           </div>
@@ -16,6 +16,10 @@
           <p style="color: #2e2f3e">{{ precio }}</p>
           {{ data }}
         </q-card-section>
+        <q-tooltip class="bg-accent" :offset="[10, 10]">
+          Ver mas
+
+        </q-tooltip>
       </q-card>
     </div>
 
@@ -40,6 +44,13 @@ export default {
     urlImg:{
       type: String,
       default: "https://cdn.quasar.dev/img/parallax2.jpg"
+    }
+  }
+  ,
+  methods: {
+    hacerAlgo(nombre) {
+      console.log(`Has hecho clic en el tarjecta ${nombre}`);
+      this.$router.push('ventascelulares');
     }
   }
 }

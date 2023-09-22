@@ -6,7 +6,7 @@
 
 <template>
   <div class="q-gutter-sm">
-    <q-btn :class="figura" :style="{ width: width, height: height }" :color="color" :icon="tipoIcono" :label="nombre" />
+    <q-btn @click="funcion" :class="figura" :style="{ width: width, height: height }" :color="color" :icon="tipoIcono" :label="nombre" />
   </div>
 </template>
 
@@ -37,6 +37,9 @@ export default {
     },height:{
       type:String,
 
+    },funcion:{
+      type:Function,
+      default:()=>{}
     }
 
   }
