@@ -33,14 +33,14 @@
 
 <script>
 import {ref} from 'vue'
-import BarraBusqueda from "components/barraBusqueda.vue";
+import BarraBusqueda from "components/componetesVarios/barraBusqueda.vue";
 import BotonPro from "components/botones/BotonPro.vue";
 
 import ArticuloPAgina from "components/footersPro/articuloPAgina.vue";
 import ObcionesDrawer from "pages/obcionesDrawer.vue";
 import BoronesGrupo from "components/botones/botonesGrupo.vue";
-import BotonesUtilies from "components/botonesUtilies.vue";
-import TituloIco from "components/tituloIco.vue";
+import BotonesUtilies from "components/componetesVarios/botonesUtilies.vue";
+import TituloIco from "components/componetesVarios/tituloIco.vue";
 import DrawerDesicion from "pages/drawerDesicion.vue";
 
 

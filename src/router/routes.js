@@ -17,9 +17,16 @@ const routes = [
     component: () => import('layouts/MainLayout2.vue'),
     children: [
       { path: 'ventascelulares', component: () => import('pages/VentaCelulares.vue') },
+    ]
+  },
+  {
+    path: '/',
+    component: () => import('layouts/MainLayout3.vue'),
+    children: [
       { path: 'nuevoanuncio', component: () => import('pages/NuevoAnuncio.vue') },
     ]
   },
+
 
 
   // Always leave this as last one,

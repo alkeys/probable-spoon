@@ -27,7 +27,7 @@ import FiltoBusqueda from "components/filtros/FiltoBusqueda.vue";
 import Filtrobotones from "components/filtros/FiltroPor.vue";
 import BotonDesplegable from "components/botones/botonDesplegable.vue";
 import BotonPro from "components/botones/BotonPro.vue";
-import BotonTarjecta from "components/botonTarjecta.vue";
+import BotonTarjecta from "components/componetesVarios/botonTarjecta.vue";
 
 </script>
 <style scoped>

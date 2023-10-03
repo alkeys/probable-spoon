@@ -3,28 +3,28 @@
 
 
 
-
-
-
 <template>
-  <q-card class="" style="background-color: #fffffe;color: #2e2f3e;margin-top: 3vh
-;max-width: 30vh">
-    <div>
-      {{nombre}}
+
+  <q-card  style="background-color: #fffffe;color: #2e2f3e;margin-top: 3vh;border-radius: 5px
+;max-width: 30vh;">
+
+    <fieldset style="border: 2px solid green; border-color: white; border-radius: 5px;">
+    <legend>{{nombre}}</legend>
       <q-option-group
         v-model="group"
         :options="options"
         color="green"
         type="checkbox"
       />
-    </div>
+    </fieldset>
+
   </q-card>
 
 </template>
 
 
 <script>
-import { ref } from 'vue';
+import {ref} from 'vue';
 
 export default {
   name: 'CajaMarcas',
