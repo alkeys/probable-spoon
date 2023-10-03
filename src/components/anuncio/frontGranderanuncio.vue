@@ -14,7 +14,7 @@ import BotonCajacard from "components/anuncio/BotonCajacard.vue";
 </script>
 <template>
   <q-page class="flex bg-primary" style="flex-direction: column; width: 100%">
-    <h3 class="text-center" style="color: #0f0e17">Nuevo Anuncio</h3>
+    <h3 class="text-center" style="color: #fffffe">Nuevo Anuncio</h3>
     <div class="q-gutter-md flex">
       <div class="q-mb-md q-mb-md-md"> <!-- Agregamos clases de margen inferior responsivo -->
         <q-card style="max-width: 600px; height: auto">
@@ -51,24 +51,30 @@ import BotonCajacard from "components/anuncio/BotonCajacard.vue";
       </div>
 
       <div class="q-mb-md q-mb-md-md q-ml-md-md"> <!-- Agregamos clases de margen responsivo -->
-        <input-anuncio nombre="Título breve del anuncio"></input-anuncio>
-        <div class="q-mt-md q-mt-md-md q-gutter-md">
+
+        <div  class="q-mt-md q-mt-md-md q-gutter-md">
           <div class="q-col-md-6 q-sm-col-12">
-            <input-anuncio tamano="100%" nombre2="Vendedor:"></input-anuncio>
+            <input-anuncio  style="flex-direction: " flextipo="" color="#fffffe" tamano="100%" nombre2="Título breve del anuncio:"></input-anuncio>
+          </div>
+
+          <div class="q-col-md-6 q-sm-col-12">
+            <input-anuncio color="#fffffe" tamano="100%" nombre2="Vendedor:"></input-anuncio>
           </div>
           <div class="q-col-md-6 q-sm-col-12 q-mt-md">
-            <input-anuncio tamano="100%" nombre2="Teléfono:"></input-anuncio>
+            <input-anuncio color="#fffffe" tamano="100%" nombre2="Teléfono:"></input-anuncio>
           </div>
         </div>
-        <text-area class="q-mt-md q-mt-md-md" nombre="Descripción"></text-area>
-        <div class="q-mt-md q-mt-md-md" style="margin-left: 15vh;">
+        <text-area  color="#fffffe"  class="q-mt-md q-mt-md-md" nombre="Descripción"></text-area>
+        <div class="q-col-md-6 q-sm-col-12 text-center flex flex-center " style="flex-direction: column" >
           <BotonCajacard nombre="Precio"></BotonCajacard>
           <div class="flex q-mt-md q-mt-md-md text-center q-ml-lg"> <!-- Agregamos clases de margen responsivo -->
-            <boton-pro :funcion="inicio" color="secondary" nombre="Cancelar"></boton-pro>
-            <boton-pro  :funcion="inicio" color="secondary" class="q-ml-md" nombre="Crear"></boton-pro>
+            <boton-pro  tipo-icono="cancel" :funcion="inicio" color="secondary" nombre="Cancelar"></boton-pro>
+            <boton-pro  tipo-icono="save" :funcion="inicio" color="secondary" class="q-ml-md" nombre="Crear"></boton-pro>
           </div>
         </div>
       </div>
+
+
     </div>
   </q-page>
 </template>

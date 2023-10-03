@@ -5,7 +5,7 @@
 
 <template>
   <div class="q-pa-sm" >
-    <label class="text-h6" for="text-input" style="margin-right: 10px;max-height: 200px;">{{ nombre }}</label>
+    <label class="text-h6" for="text-input" :style="{color:color}" style="margin-right: 10px;max-height: 200px;">{{ nombre }}</label>
     <q-input
       class="bg-white"
       v-model="text"
@@ -22,6 +22,8 @@ export default {
   name: "TextArea",
   props:{
     nombre:{
+      type: String,
+    },color:{
       type: String,
     }
   },
