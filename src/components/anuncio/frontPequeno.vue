@@ -63,6 +63,11 @@ export default {
         },
       ],
     },
+  }, methods: {
+    inicio(){
+      this.$router.push('/');
+    }
+
   },
 }
 </script>

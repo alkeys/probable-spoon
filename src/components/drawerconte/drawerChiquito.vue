@@ -15,8 +15,8 @@
   </div>
   <div class="q-mt-lg">
     <q-btn-group push style="flex-direction: column;width: 100%">
-      <q-btn push label="Inicio" icon="home"/>
-      <q-btn push label="Nuevo Anuncio" icon="add_circle"/>
+      <q-btn push @click="inicio" label="Inicio" icon="home"/>
+      <q-btn push @click="agregarAnuncio" label="Nuevo Anuncio" icon="add_circle"/>
       <q-btn push label="Carrito" icon="shopping_cart"/>
       <q-btn push label="Estadisticas " icon="update"/>
     </q-btn-group>
@@ -24,5 +24,16 @@
 </template>
 
 
-<script setup>
+<script >
+export default {
+  methods: {
+    agregarAnuncio() {
+      this.$router.push('nuevoanuncio');
+    },
+    inicio(){
+      this.$router.push('/');
+    }
+
+  },
+}
 </script>
