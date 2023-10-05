@@ -1,5 +1,7 @@
 
 
+
+
 <template>
   <div class="q-pa-md">
     <label for="text-input" style="margin-right: 10px;">{{ nombre }}</label>

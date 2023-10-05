@@ -9,6 +9,7 @@ import CarruselImg from "components/anuncio/CarruselImg.vue";
 import InputAnuncio from "components/anuncio/inputAnuncio.vue";
 import TextArea from "components/anuncio/textAreaxd.vue";
 import BotonCajacard from "components/anuncio/BotonCajacard.vue";
+import CaracteristicasyEstados from "components/anuncio/caracteristicasyEstados.vue";
 
 
 </script>
@@ -17,23 +18,7 @@ import BotonCajacard from "components/anuncio/BotonCajacard.vue";
     <h3 class="text-center" style="color: #fffffe">Nuevo Anuncio</h3>
     <div class="q-gutter-md flex">
       <div class="q-mb-md q-mb-md-md"> <!-- Agregamos clases de margen inferior responsivo -->
-        <q-card style="max-width: 600px; height: auto">
-          <div class="flex q-pl-md" style="margin: 0; display: flex; align-items: center">
-            <p style="margin: 0">Estado:</p>
-            <checkbox-grupo class="q-mt-auto" :options="datosEstado"></checkbox-grupo>
-          </div>
-
-          <div class="q-pb-md">
-            <inputData nombre="Marca:"></inputData>
-            <inputData nombre="Modelo:"></inputData>
-            <inputData nombre="Pantalla:" info="Pulgadas" tipo-data="number"></inputData>
-
-            <boton-desplegable nombre="Sistema:"></boton-desplegable>
-            <inputData nombre="Rom:" info="Almacenamiento interno" sufijo-tipo="GB" tipo-data="number"></inputData>
-            <inputData nombre="RAM:" sufijo-tipo="GB" tipo-data="number"></inputData>
-          </div>
-
-        </q-card>
+   <caracteristicasy-estados></caracteristicasy-estados>
         <q-card class="q-mt-md flex" style="max-width: 600px; flex-direction: row">
 
           <div class="q-pb-md q-ml-lg">
@@ -50,18 +35,18 @@ import BotonCajacard from "components/anuncio/BotonCajacard.vue";
         </q-card>
       </div>
 
-      <div class="q-mb-md q-mb-md-md q-ml-md-md"> <!-- Agregamos clases de margen responsivo -->
+      <div class="q-mb-md q-mb-md-md q-ml-lg-lg " style="width: 100vh;max-width: 50%"> <!-- Agregamos clases de margen responsivo -->
 
         <div  class="q-mt-md q-mt-md-md q-gutter-md">
           <div class="q-col-md-6 q-sm-col-12">
-            <input-anuncio  style="flex-direction: " flextipo="" color="#fffffe" tamano="100%" nombre2="Título breve del anuncio:"></input-anuncio>
+            <input-anuncio flextipo="column" color="#fffffe" tamano="100%" nombre2="Título breve del anuncio:"></input-anuncio>
           </div>
 
           <div class="q-col-md-6 q-sm-col-12">
-            <input-anuncio color="#fffffe" tamano="100%" nombre2="Vendedor:"></input-anuncio>
+            <input-anuncio flextipo="column"  color="#fffffe" tamano="100%" nombre2="Vendedor:"></input-anuncio>
           </div>
           <div class="q-col-md-6 q-sm-col-12 q-mt-md">
-            <input-anuncio color="#fffffe" tamano="100%" nombre2="Teléfono:"></input-anuncio>
+            <input-anuncio  flextipo="column" color="#fffffe" tamano="100%" nombre2="Teléfono:"></input-anuncio>
           </div>
         </div>
         <text-area  color="#fffffe"  class="q-mt-md q-mt-md-md" nombre="Descripción"></text-area>

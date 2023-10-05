@@ -2,20 +2,16 @@
 
 
 
-
-
 <template>
-  <div class="q-pl-md flex" style="align-items: center;" :style="{'flex-direction':flextipo}">
+  <div class="q-pl-md flex"  :style="{'flex-direction': flextipo,'align-items': alig,width:tamano3}">
     <div>
-      <label  class="text-h6" for="text-input" :style="{color:color}"  style="margin-right: 10px;">{{ nombre2 }}</label>
-
+      <label class="text-h6" for="text-input" :style="{ color: color, marginRight: '10px' }">{{ nombre2 }}</label>
     </div>
-
-    <q-input :style="{ width: tamano, height: tamano2 }" clearable filled bg-color="white" v-model="text"
-             :label="nombre"/>
+    <div style="flex-grow: 1;"> <!-- Agrega flex-grow: 1 para que ocupe todo el ancho disponible -->
+      <q-input :style="{width:tamano}" clearable filled :bg-color="colorbg" v-model="text" :label="nombre" :suffix="sufijoTipo"/>
+    </div>
   </div>
 </template>
-
 
 
 <script>
@@ -30,15 +26,26 @@ export default {
     tamano: {
       type: String,
       default: '500px',
-    }, tamano2: {
+    },
+    tamano3: {
+      type: String,
+    },
+    tamano2: {
       type: String,
 
-    },color:{
+    }, color: {
       type: String,
       default: 'black',
-    },flextipo:{
+    }, flextipo: {
       type: String,
 
+    }, colorbg: {
+      type: String,
+      default: 'white',
+    },alig:{
+      type: String,
+      },sufijoTipo: {
+      type: String,
     }
   },
   data() {

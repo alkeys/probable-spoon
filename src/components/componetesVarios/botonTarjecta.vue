@@ -11,7 +11,7 @@
         expand-separator
         :icon="tipoIcono"
         :label="nombre"
-        default-opened
+
       >
 
         <obciones-drawer class="q-mr-lg"></obciones-drawer>

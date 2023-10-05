@@ -2,6 +2,9 @@
 
 
 
+
+
+
 <script setup>
 import ObcionesDrawer from "pages/obcionesDrawer.vue";
 import DrawerChiquito from "components/drawerconte/drawerChiquito.vue";

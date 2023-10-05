@@ -18,7 +18,6 @@
         </q-card-section>
         <q-tooltip class="bg-accent" :offset="[10, 10]">
           Ver mas
-
         </q-tooltip>
       </q-card>
     </div>
