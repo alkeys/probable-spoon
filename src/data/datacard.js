@@ -4,7 +4,7 @@
 export const DataCard = {
   cardsData: [
     {
-      title: "Samsung Galaxy S21 nsdjdsjgklsjgdkljkkljkdskfksdl",
+      title: "Samsung Galaxy S21 ",
       data: "Modelo de teléfono Samsung Galaxy S21 con pantalla OLED de 6.2 pulgadas y cámara de alta resolución.",
       precio: "$699.99",
       urlImg: "https://m.media-amazon.com/images/I/61m1Dot5KCL.jpg"
