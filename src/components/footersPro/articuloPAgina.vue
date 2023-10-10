@@ -1,28 +1,25 @@
 
 
 
-
-
 <template>
   <div class="flex text-white ocultarCosa">
     <p class="q-pt-md q-pr-lg q-pl-lg ">Articulo por pagina</p>
     <q-select
       class="q-pr-lg"
       filled
-      v-model="single"
-      :options="options"
-      style="width: 100px"
+      v-model="selectedValue"
+    :options="options"
+    style="width: 100px"
+
     />
   </div>
 </template>
 
 <style scoped>
 @media (max-width: 770px) {
-  .ocultarCosa{
+  .ocultarCosa {
     display: none;
   }
-
-
 }
 </style>
 
@@ -31,10 +28,13 @@ import { ref } from 'vue'
 
 export default {
   setup () {
+    const selectedValue = ref("10"); // Valor inicial de selectedValue
+
+    const options = ["10", "15", "25", "50", "100"];
+
     return {
-      single: ref(null),
-      multiple: ref(null),
-      options: ["10", "15", "25", "50", "100"]
+      selectedValue,
+      options,
     }
   }
 }

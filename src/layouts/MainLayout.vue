@@ -2,21 +2,16 @@
   <q-layout view="hHh lpR lFf">
 
 
-
-
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
 
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"/>
-
-        <div class="flex flex-center">
-          <titulo-ico></titulo-ico>
-          <BarraBusqueda></BarraBusqueda>
-          <botones-utilies></botones-utilies>
+        <div class="flex" style="max-width: 20%">
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"/>
+          <titulo-ico style="position: relative"></titulo-ico>
         </div>
-
-
+        <menu-pro></menu-pro>
       </q-toolbar>
+
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
@@ -29,11 +24,11 @@
 
     <q-footer elevated class="bg-primary text-white " :justify="'center'">
       <q-toolbar>
-
-        <borones-grupo nombres="<123456789>">
-        </borones-grupo>
-
-        <articulo-p-agina></articulo-p-agina>
+        <div class="flex" style="justify-content: center">
+          <borones-grupo class="q-ml-lg" nombres="<123456789>">
+          </borones-grupo>
+          <articulo-p-agina></articulo-p-agina>
+        </div>
 
       </q-toolbar>
     </q-footer>
@@ -52,10 +47,11 @@ import BoronesGrupo from "components/botones/botonesGrupo.vue";
 import BotonesUtilies from "components/componetesVarios/botonesUtilies.vue";
 import TituloIco from "components/componetesVarios/tituloIco.vue";
 import DrawerDesicion from "pages/drawerDesicion.vue";
+import MenuPro from "components/toolbar/MenuPro.vue";
 
 
 export default {
-  components: {DrawerDesicion, TituloIco, BotonesUtilies, BoronesGrupo, ArticuloPAgina, BarraBusqueda},
+  components: {TituloIco, MenuPro, DrawerDesicion, BoronesGrupo, ArticuloPAgina},
   setup() {
     const leftDrawerOpen = ref(false)
 

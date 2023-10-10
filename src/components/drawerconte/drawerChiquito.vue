@@ -17,8 +17,8 @@
     <q-btn-group push style="flex-direction: column;width: 100%">
       <q-btn push @click="inicio" label="Inicio" icon="home"/>
       <q-btn push @click="agregarAnuncio" label="Nuevo Anuncio" icon="add_circle"/>
-      <q-btn push label="Carrito" icon="shopping_cart"/>
-      <q-btn push label="Estadisticas " icon="update"/>
+      <q-btn  @click="carro" push label="Carrito" icon="shopping_cart"/>
+      <q-btn @click="carro" push label="Estadisticas " icon="update"/>
     </q-btn-group>
   </div>
 </template>
@@ -32,7 +32,10 @@ export default {
     },
     inicio(){
       this.$router.push('/');
-    }
+    },
+    carro(){
+      this.$router.push('construcion');
+    },
 
   },
 }
