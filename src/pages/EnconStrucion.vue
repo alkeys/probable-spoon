@@ -1,7 +1,16 @@
 <template>
-  <q-page class="q-pa-md">
+  <q-page class="q-pa-md flex" style="justify-content: center">
     <div class="background-image">
     </div>
+    <q-btn
+      class="q-mt-xl "
+      color="secondary"
+      text-color="white"
+      unelevated
+      to="/"
+      label="Go Home"
+      no-caps style="width: 100%"
+    />
   </q-page>
 </template>
 
@@ -29,3 +38,5 @@
   }
 }
 </style>
+<script setup>
+</script>
