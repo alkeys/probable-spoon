@@ -1,55 +1,24 @@
 
-
-
-
-
-
 <template>
-  <div class="q-ml-md bg-primary text-white">
-    <q-list   style="max-width: 400px">
-      <q-expansion-item
-        expand-separator
-        :icon="tipoIcono"
-        :label="nombre"
 
-      >
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+   <obciones-drawer></obciones-drawer>
+    </q-drawer>
 
-        <obciones-drawer class="q-mr-lg"></obciones-drawer>
-        </q-expansion-item>
+    <div class="q-ml-md bg-primary text-white">
+      <boton-pro @click="openDrawer" tipo-icono="filter_alt" nombre="" width="200%"></boton-pro>
+    </div>
 
-
-
-
-    </q-list>
-  </div>
 </template>
 
-
-<script >
-import CajaMarcas from "components/drawerconte/CajaDatos.vue";
-import {dataTelefonos} from "src/data/dataTelefonos";
+<script setup>
+import { ref } from "vue";
+import BotonPro from "components/botones/BotonPro.vue";
 import ObcionesDrawer from "pages/obcionesDrawer.vue";
 
-export default {
-  computed: {
-    dataTelefonos() {
-      return dataTelefonos
-    }
-  },
-  components: {ObcionesDrawer},
-  props: {
-    nombre: {
-      type: String,
-      default: ''
-    },
-    tipoIcono: {
-      type: String,
+const leftDrawerOpen = ref(false);
 
-    },
-    color:{
-      type:String,
-      default: "primary"
-    },
-  }
-}
+const openDrawer = () => {
+  leftDrawerOpen.value = true;
+};
 </script>

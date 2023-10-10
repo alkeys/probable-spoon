@@ -1,6 +1,4 @@
 
-
-
 export const DataCard = {
   cardsData: [
     {
@@ -19,7 +17,7 @@ export const DataCard = {
       title: "Nokia 8.3",
       data: "Modelo de teléfono Nokia 8.3 con pantalla IPS de 6.81 pulgadas y conectividad 5G.",
       precio: "$499.99",
-      urlImg: "https://images.ctfassets.net/wcfotm6rrl7u/12hVmTabVOfaZX2orFYnwn/7317299d96cf5c43dfbfe8491bbf7016/nokia-8_3_5G-polar_night-front_back-int.png?h=1000&fm=png&fl=png8"
+      urlImg: "https://cdn11.bigcommerce.com/s-ss31ap/images/stencil/1280x1280/products/7837/29829/41BJZYPXZTL__63120.1608529578.jpg?c=2"
     },
     {
       title: "Xiaomi Mi 11",

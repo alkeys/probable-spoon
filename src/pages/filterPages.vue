@@ -16,7 +16,7 @@
 <div class="ocultarCosa2 flex q-ma-sm flex no-wrap" >
   <P class="text-h8 q-ma-sm">Ordenar Por:</P>
   <boton-desplegable></boton-desplegable>
-<boton-tarjecta nombre="" tipo-icono="filter_alt" ></boton-tarjecta>
+<boton-tarjecta style="height: auto" nombre="" tipo-icono="filter_alt" ></boton-tarjecta>
 
 </div>
 
