@@ -1,8 +1,6 @@
 <template>
-  <q-page>
-    <div class="q-ma-md text-center">
-      <div class="background-image">
-      </div>
+  <q-page class="q-pa-md">
+    <div class="background-image">
     </div>
   </q-page>
 </template>
@@ -13,7 +11,7 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 100vh; /* Altura predeterminada */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,9 +21,11 @@
   padding: 20px;
 }
 
+
+/* Cambiar la altura a 50vh cuando la resolución sea 770px o menos */
 @media (max-width: 770px) {
   .background-image {
-    height: 50vh;
+    height: 40vh;
   }
 }
 </style>
