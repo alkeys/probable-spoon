@@ -45,7 +45,7 @@ export const DataCard = {
     },
     {
       title: "Xiaomi Redmi Note 10",
-      data: "Modelo de teléfono Xiaomi Redmi Note 10 con pantalla AMOLED de 6.43 pulgadas y batería de larga duración.",
+      data: "Modelo de teléfono Xiaomi Redmi Note 10 con pantalla AMOLED de 6.43 pulgadas.",
       precio: "$299.99",
       urlImg: "https://i.ebayimg.com/thumbs/images/g/KCcAAOSw8BZkz3H0/s-l500.jpg"
     }
