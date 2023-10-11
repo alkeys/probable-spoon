@@ -73,6 +73,7 @@ export default {
   name: "frontGranderanuncio",
   methods: {
     inicio(){
+
       this.$router.push('/');
     }
 

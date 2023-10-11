@@ -6,7 +6,7 @@
 <template>
   <q-page >
     <div class="row">
-      <div class="col-6 col-sm-3 text-center" v-for="(card, i) in cardsData" :key="i">
+      <div class="col-6 col-sm-3 col-lg-2 text-center" v-for="(card, i) in cardsData" :key="i">
         <CardsImg  class="mobi hover" :title="card.title" :data="card.data" :precio="card.precio" :urlImg="card.urlImg" />
       </div>
     </div>

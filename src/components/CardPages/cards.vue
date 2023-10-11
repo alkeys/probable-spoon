@@ -5,8 +5,8 @@
 <div class="q-pa-md row items-start q-gutter-md text-center">-->
 <template>
   <div class="q-gutter-md q-mb-md text-center" style="width: 100%; padding: 1vh">
-    <q-card class="q-mb-md q-mb-auto" style="background-color: #fffffe; max-height: 470px; height: 400px" @click="hacerAlgo(title)">
-      <q-img :src="urlImg" class="q-pa-md" style="max-height: 600px; object-fit: cover">
+    <q-card class="q-mb-md q-mb-auto" style="background-color: #fffffe; max-height: 100vh; height: 50vh" @click="hacerAlgo(title)">
+      <q-img :src="urlImg" class="q-pa-md image-size" style="object-fit: cover;max-height: 100vh; height: 30vh">
         <div class="absolute-bottom text-h6">
           {{ title }}
         </div>
@@ -21,6 +21,13 @@
     </q-card>
   </div>
 </template>
+
+<style scoped>
+.image-size {
+  width: 100%;
+  height: 200px; /* Ajusta el tamaño deseado */
+}
+</style>
 
 
 <script >
