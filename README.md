@@ -1,6 +1,6 @@
 # proyecto fpi  (proyecto)
 
-proyecto echo en quasar 
+proyecto echo en quasar By aviles
 
 ## Install the dependencies
 ```bash
