@@ -1,61 +1,93 @@
-
-
-
-<!-- en esta cosa se resive para las card de los anuncios
-<div class="q-pa-md row items-start q-gutter-md text-center">-->
 <template>
-  <div class="q-gutter-md q-mb-md text-center" style="width: 100%; padding: 1vh">
-    <q-card class="q-mb-md q-mb-auto" style="background-color: #fffffe; max-height: 100vh; height: 58vh" @click="hacerAlgo(title)">
-      <q-img :src="urlImg" class="q-pa-md image-size" style="object-fit: cover;max-height: 100vh; height: 30vh">
-        <div class="absolute-bottom text-h6">
-          {{ title }}
-        </div>
-      </q-img>
-      <q-card-section>
-        <p style="color: #2e2f3e">{{ precio }}</p>
-        {{ data }}
-      </q-card-section>
-      <q-tooltip class="bg-accent" :offset="[10, 10]">
-        Ver más
-      </q-tooltip>
-    </q-card>
+  <div class="q-gutter-md q-mb-md text-center" style="width: 100%; padding: 1vh" @click="hacerAlgo(title)">
+    <div class="card-container">
+      <q-card class="q-mb-md q-mb-auto small-card card-container" style="background-color: #fffffe;">
+        <q-img :src="urlImg" class="q-pa-md image-size">
+          <div class="absolute-bottom text-h6" :style="textSize">
+            {{ title }}
+          </div>
+        </q-img>
+        <q-card-section>
+          <p style="color: #2e2f3e">{{ precio }}</p>
+          {{ data }}
+        </q-card-section>
+        <q-tooltip class="bg-accent" :offset="[10, 10]">
+          Ver más
+        </q-tooltip>
+      </q-card>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .image-size {
-  width: 100%;
-  height: 200px; /* Ajusta el tamaño deseado */
+  width: 200px;
+  height: 200px; /* Establece la altura deseada para todas las imágenes */
+  object-fit: cover;
+}
+
+.textSize {
+  font-size: 10vh; /* Ajusta el tamaño del texto según tu preferencia */
+}
+
+/* Clases CSS para el tamaño de las tarjetas */
+.small-card {
+  width: 400px; /* Tamaño pequeño */
+}
+
+.medium-card {
+  width: 300px; /* Tamaño mediano */
+}
+
+.large-card {
+  width: 400px; /* Tamaño grande */
+}
+
+/* Contenedor de tarjetas con altura mínima */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 400px; /* Ajusta la altura mínima según tu necesidad */
 }
 </style>
 
 
-<script >
+<script>
 export default {
-  name: 'CardsImg',props: {
+  name: 'CardsImg',
+  props: {
     title: {
       type: String,
       default: 'Title'
     },
     data: {
       type: String,
-      default: 'caracteristicas'
+      default: 'características'
     },
     precio: {
       type: String,
       default: 'precio'
     },
-    urlImg:{
+    urlImg: {
       type: String,
       default: "https://cdn.quasar.dev/img/parallax2.jpg"
     }
-  }
-  ,
+  },
+  computed: {
+    textSize() {
+      // Ajusta el tamaño del texto según la altura de la tarjeta
+      return {
+        fontSize: `${this.$el.clientHeight * 0.06}px` // Ajusta el factor de escala según tu preferencia
+      };
+    }
+  },
   methods: {
     hacerAlgo(nombre) {
-      console.log(`Has hecho clic en el tarjecta ${nombre}`);
+      console.log(`Has hecho clic en la tarjeta ${nombre}`);
       this.$router.push('ventascelulares');
     }
   }
-}
+};
 </script>
