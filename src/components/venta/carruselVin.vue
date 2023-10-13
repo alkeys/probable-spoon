@@ -37,6 +37,7 @@ export default {
 </script>
 <style>
 .carousel-mediano {
+  border: 5px solid #ccc; /* Establece el borde según tus preferencias */
   margin-top: 10px;
   margin-left: 100px;
   width: 700px; /* Personaliza el ancho según tus necesidades */
