@@ -27,7 +27,7 @@ export default {
 <style lang="sass" scoped>
 .card1
   margin-top: 10px
-  margin-left: 600px
+  margin-left: 640px
   width: 300%
   height: 250px
   max-width: 300px
