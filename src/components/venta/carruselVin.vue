@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="q-pa-md">
     <div class="row justify-around">
@@ -35,7 +37,6 @@
         <q-card style="outline: auto" class="q-ma-md">
           <h5>Vendedor: Jose Alarcon Teléfono: 6054-4147</h5>
         </q-card>
-        <CardVen></CardVen>
       </div>
     </div>
   </div>
