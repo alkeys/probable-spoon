@@ -1,3 +1,7 @@
+
+
+
+
 <script setup>
 import CarruselVin from "components/venta/carruselVin.vue";
 import CardInfo from "components/venta/CardInfo.vue";
