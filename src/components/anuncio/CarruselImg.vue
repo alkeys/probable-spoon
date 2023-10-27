@@ -1,6 +1,5 @@
 
 
-
 <template>
   <div>
     <q-carousel
@@ -11,21 +10,30 @@
       infinite
       class="carousel-pequeno"
     >
-    <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-    <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-    <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-    <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+      <q-carousel-slide
+        v-for="(image, index) in images"
+        :key="index"
+        :name="index"
+        :img-src="image"
+      />
     </q-carousel>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
 
 export default {
-  setup () {
+  props: {
+    images: {
+      type: Array,
+      default: () => []
+    }
+  },
+  setup() {
+    const slide = ref(0); // Inicializa el índice de diapositivas en 0 o cualquier otro valor por defecto
     return {
-      slide: ref(1)
+      slide
     }
   }
 }

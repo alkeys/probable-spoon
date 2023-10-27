@@ -8,7 +8,7 @@
       <label class="text-h6" for="text-input" :style="{ color: color, marginRight: '10px' }">{{ nombre2 }}</label>
     </div>
     <div style="flex-grow: 1;"> <!-- Agrega flex-grow: 1 para que ocupe todo el ancho disponible -->
-      <q-input :style="{width:tamano}" clearable filled :bg-color="colorbg" v-model="text" :label="nombre" :suffix="sufijoTipo"/>
+      <q-input :onchange="emitValor" :style="{width:tamano}" clearable filled :bg-color="colorbg" v-model="text" :label="nombre" :suffix="sufijoTipo"/>
     </div>
   </div>
 </template>
@@ -17,6 +17,13 @@
 <script>
 export default {
   props: {
+    funcion:{
+      type:Function,
+    },
+    id:{
+      type:String,
+    }
+    ,
     nombre2: {
       type: String,
     },
@@ -47,6 +54,11 @@ export default {
       },sufijoTipo: {
       type: String,
     }
+  },methods: {
+    emitValor() {
+      const text = this.text;
+      this.funcion(text,this.id);
+    },
   },
   data() {
     return {

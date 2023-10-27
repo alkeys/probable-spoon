@@ -10,24 +10,26 @@ import CheckboxGrupo from "components/botones/checkboxGrupo.vue";
 <template>
 
   <q-card style="max-width: 600px; height: auto">
+
     <div class="flex q-pl-md" style="margin: 0; display: flex; align-items: center">
       <p style="margin: 0">Estado:</p>
       <checkbox-grupo class="q-mt-auto" :options="datosEstado"></checkbox-grupo>
     </div>
 
     <div class="q-pb-md flex" style="flex-direction: row">
-      <inputData nombre="Marca:"></inputData>
-      <inputData nombre="Modelo:"></inputData>
-      <inputData nombre="Pantalla:" info="Pulgadas" tipo-data="number"></inputData>
+      <inputData :onChanges="recolectarValor" nombre="Marca"></inputData>
+      <inputData :onChanges="recolectarValor" nombre="Modelo"></inputData>
+      <inputData :onChanges="recolectarValor" nombre="Pantalla" info="Pulgadas" tipo-data="number"></inputData>
 
       <boton-desplegable nombre="Sistema:"></boton-desplegable>
       <div class="ocultarCosa">
-        <inputData  nombre="Rom:" info="Almacenamiento interno" sufijo-tipo="GB" tipo-data="number"></inputData>
-        <inputData nombre="RAM:" sufijo-tipo="GB" tipo-data="number"></inputData>
+        <inputData :onChanges="recolectarValor" nombre="Rom" info="Almacenamiento interno" sufijo-tipo="GB"
+                   tipo-data="number"></inputData>
+        <inputData :onChanges="recolectarValor" nombre="RAM" sufijo-tipo="GB" tipo-data="number"></inputData>
       </div>
       <div class="ocultarCosa2">
-        <inputData  nombre="Rom:"  sufijo-tipo="GB" tipo-data="number"></inputData>
-        <inputData nombre="RAM:" sufijo-tipo="GB" tipo-data="number"></inputData>
+        <inputData :onChanges="recolectarValor" nombre="Rom" sufijo-tipo="GB" tipo-data="number"></inputData>
+        <inputData :onChanges="recolectarValor" nombre="RAM" sufijo-tipo="GB" tipo-data="number"></inputData>
       </div>
     </div>
 
@@ -44,11 +46,13 @@ import CheckboxGrupo from "components/botones/checkboxGrupo.vue";
 @media (min-width: 770px) {
   .ocultarCosa2 {
     display: none;
-  }}
+  }
+}
 </style>
 
 
 <script>
+
 export default {
   props: {
     datosEstado: {
@@ -65,5 +69,24 @@ export default {
       ],
     },
   },
-}
+  data() {
+    return {
+      formData: {
+        Marca: "",
+        Modelo: "",
+        Pantalla: "",
+        Sistema: "",
+        Rom: "",
+        RAM: "",
+      },
+    };
+  },
+  methods: {
+    recolectarValor(valor, nombre) {
+      this.formData[nombre] = valor;
+      console.log(`Valor recolectado:${nombre} - ${valor} `);
+      localStorage.setItem("formData1", JSON.stringify(this.formData));
+    },
+  }
+};
 </script>

@@ -19,3 +19,6 @@ console.clear()
 
 
 </style>
+<script>
+console.clear()
+</script>

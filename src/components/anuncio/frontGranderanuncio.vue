@@ -1,8 +1,4 @@
 <script setup>
-
-import CheckboxGrupo from "components/botones/checkboxGrupo.vue";
-import InputData from "components/anuncio/inputData.vue";
-import BotonDesplegable from "components/anuncio/botonDesplegable.vue";
 import BotonPro from "components/botones/BotonPro.vue";
 import TableDatos from "components/anuncio/tableDatos.vue";
 import CarruselImg from "components/anuncio/CarruselImg.vue";
@@ -17,44 +13,53 @@ import CaracteristicasyEstados from "components/anuncio/caracteristicasyEstados.
   <q-page class="flex bg-primary" style="flex-direction: column; width: 100%">
     <h3 class="text-center" style="color: #fffffe">Nuevo Anuncio</h3>
     <div class="q-gutter-md flex">
-      <div class="q-mb-md q-mb-md-md"> <!-- Agregamos clases de margen inferior responsivo -->
-   <caracteristicasy-estados></caracteristicasy-estados>
+      <div class="q-mb-md q-mb-md-md q-ml-lg"> <!-- Agregamos clases de margen inferior responsivo -->
+        <caracteristicasy-estados></caracteristicasy-estados>
         <q-card class="q-mt-md flex" style="max-width: 600px; flex-direction: row">
 
           <div class="q-pb-md q-ml-lg">
             Imágenes
-            <div class="q-mt-md">
-              <boton-pro tipo-icono="add_circle" nombre="" figura="q-btn--round" width="50px" height="50px"></boton-pro>
-              <boton-pro class="q-mt-md" figura="q-btn--round" tipo-icono="do_not_disturb_on" nombre=""></boton-pro>
+            <div class="q-mt-md flex " style="flex-direction: column">
+              <q-btn @click="agregarImagen" type="input" icon="add_circle" class="q-btn--round"
+                     style="width:50px;height:50px"></q-btn>
+              <!--//agregar imagen -->
+              <q-btn @click="quitarImagen" class="q-mt-md q-btn--round" icon="do_not_disturb_on"
+                     style="width:50px;height:50px"></q-btn>
+              <!--borrar imagen-->
             </div>
           </div>
           <table-datos></table-datos>
           <div style="max-height: 20vh">
-            <CarruselImg></CarruselImg>
+            <CarruselImg :images="images"></CarruselImg>
           </div>
         </q-card>
       </div>
 
-      <div class="q-mb-md q-mb-md-md q-ml-lg-lg " style="width: 100vh;max-width: 50%"> <!-- Agregamos clases de margen responsivo -->
+      <div class="q-mb-md q-mb-md-md q-ml-lg-lg " style="width: 100vh;max-width: 50%">
+        <!-- Agregamos clases de margen responsivo -->
 
-        <div  class="q-mt-md q-mt-md-md q-gutter-md">
+        <div class="q-mt-md q-mt-md-md q-gutter-md">
           <div class="q-col-md-6 q-sm-col-12">
-            <input-anuncio flextipo="column" color="#fffffe" tamano="100%" nombre2="Título breve del anuncio:"></input-anuncio>
+            <input-anuncio :funcion="recolectarValor" id="Titulo" flextipo="column" color="#fffffe" tamano="100%"
+                           nombre2="Título breve del anuncio:"></input-anuncio>
           </div>
 
           <div class="q-col-md-6 q-sm-col-12">
-            <input-anuncio flextipo="column"  color="#fffffe" tamano="100%" nombre2="Vendedor:"></input-anuncio>
+            <input-anuncio :funcion="recolectarValor" id="Vendedor"
+                           flextipo="column" color="#fffffe" tamano="100%" nombre2="Vendedor:"></input-anuncio>
           </div>
           <div class="q-col-md-6 q-sm-col-12 q-mt-md">
-            <input-anuncio  flextipo="column" color="#fffffe" tamano="100%" nombre2="Teléfono:"></input-anuncio>
+            <input-anuncio :funcion="recolectarValor" id="Tel"
+                           flextipo="column" color="#fffffe" tamano="100%" nombre2="Teléfono:"></input-anuncio>
           </div>
         </div>
-        <text-area  color="#fffffe"  class="q-mt-md q-mt-md-md" nombre="Descripción"></text-area>
-        <div class="q-col-md-6 q-sm-col-12 text-center flex flex-center " style="flex-direction: column" >
-          <BotonCajacard nombre="Precio"></BotonCajacard>
+        <text-area :on-changes="recolectarValor" id="Descrip" color="#fffffe" class="q-mt-md q-mt-md-md"
+                   nombre="Descripción"></text-area>
+        <div class="q-col-md-6 q-sm-col-12 text-center flex flex-center " style="flex-direction: column">
+          <BotonCajacard :funcion="recolectarValor" nombre="Precio"></BotonCajacard>
           <div class="flex q-mt-md q-mt-md-md text-center q-ml-lg"> <!-- Agregamos clases de margen responsivo -->
-            <boton-pro  tipo-icono="cancel" :funcion="inicio" color="secondary" nombre="Cancelar"></boton-pro>
-            <boton-pro  tipo-icono="save" :funcion="inicio" color="secondary" class="q-ml-md" nombre="Crear"></boton-pro>
+            <boton-pro tipo-icono="cancel" :funcion="inicio" color="secondary" nombre="Cancelar"></boton-pro>
+            <boton-pro tipo-icono="save" :funcion="enviar" color="secondary" class="q-ml-md" nombre="Crear"></boton-pro>
           </div>
         </div>
       </div>
@@ -69,17 +74,97 @@ import CaracteristicasyEstados from "components/anuncio/caracteristicasyEstados.
 
 </style>
 <script>
+
+
 export default {
   name: "frontGranderanuncio",
+  props: {
+    funcionA: Function, // Declara la función como prop
+  },
   methods: {
-    inicio(){
+    inicio() {
 
       this.$router.push('/');
-    }
+    },
+    agregarImagen() {
+
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*"; // Asegura que solo se puedan seleccionar imágenes
+
+      input.addEventListener("change", (event) => {
+        const files = event.target.files;
+
+        if (files.length > 0) {
+          const file = files[0]; // Suponemos que se selecciona solo una imagen
+
+          // Puedes cargar la imagen a tu servidor o almacenarla en un arreglo
+          // Por ejemplo, si deseas almacenar la imagen en el arreglo `images`:
+          const reader = new FileReader();
+
+          reader.onload = (e) => {
+            this.images.push(e.target.result); // Agrega la imagen al arreglo
+          };
+
+          reader.readAsDataURL(file);
+        }
+      });
+
+      input.click(); // Abre el campo de entrada de archivo
+    },
+    quitarImagen(index) {
+      this.images.splice(index, 1);
+    },
+    /*  recoleta los datos del formulario 2 */
+    recolectarValor(valor, id) {
+      this.formData2[id] = valor
+    },
+    traerDatos() {
+      const formDataJSON = localStorage.getItem("formData1");
+      if (formDataJSON) {
+        this.formData1 = JSON.parse(formDataJSON);
+      }
+    },
+    enviar() {
+      this.traerDatos()
+      this.objData = {...this.formData1, ...this.formData2, images: this.images}//creando objeto para enviar abase de datos xd
+   console.log(this.objData)
+    },
+
 
   },
   data() {
     return {
+      objData: {
+        Marca: "",
+        Modelo: "",
+        Pantalla: "",
+        Sistema: "",
+        Rom: "",
+        RAM: "",
+        Titulo: "",
+        Vendedor: "",
+        Tel: "",
+        Descrip: "",
+        Precio: "",
+        images: [],
+      },
+      formData2: {
+        Titulo: "",
+        Vendedor: "",
+        Tel: "",
+        Descrip: "",
+        Precio: ""
+      },
+      formData1: {
+        Marca: "",
+        Modelo: "",
+        Pantalla: "",
+        Sistema: "",
+        Rom: "",
+        RAM: "",
+      },
+      images: [], // Un arreglo para almacenar las imágenes
       datosEstado: [
         {
           label: 'Nuevo',
@@ -94,6 +179,8 @@ export default {
       ],
 
     }
-  },
+  }
+
+
 }
 </script>

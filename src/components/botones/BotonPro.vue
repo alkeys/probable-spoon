@@ -6,7 +6,8 @@
 
 <template>
   <div class="q-gutter-sm">
-    <q-btn @click="funcion" :class="figura" :style="{ width: width, height: height }" :color="color" :icon="tipoIcono" :label="nombre" />
+    <q-btn @click="funcion" :class="figura" :style="{ width: width, height: height }"
+           :color="color" :icon="tipoIcono" :label="nombre"  />
   </div>
 </template>
 
@@ -16,6 +17,11 @@
 export default {
   name: 'BotonPro',
   props: {
+    tipo: {
+      type: String,
+      default: 'button'
+    }
+    ,
     nombre: {
       type: String,
       default: 'boton pro'
