@@ -1,19 +1,20 @@
 <template>
   <q-layout view="hHh lpR lFf">
 
+
+
+
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
 
-
-
-        <div class="flex flex-center">
-          <titulo-ico></titulo-ico>
-          <BarraBusqueda></BarraBusqueda>
-          <botones-utilies></botones-utilies>
+        <div class="flex" style="max-width: 20%">
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"/>
+          <titulo-ico style="position: relative"></titulo-ico>
         </div>
-
-
+        <menu-pro></menu-pro>
       </q-toolbar>
+
+
     </q-header>
 
 
@@ -42,10 +43,11 @@ import BoronesGrupo from "components/botones/botonesGrupo.vue";
 import BotonesUtilies from "components/componetesVarios/botonesUtilies.vue";
 import TituloIco from "components/componetesVarios/tituloIco.vue";
 import DrawerDesicion from "pages/drawerDesicion.vue";
+import MenuPro from "components/toolbar/MenuPro.vue";
 
 
 export default {
-  components: { TituloIco, BotonesUtilies, BarraBusqueda},
+  components: {MenuPro},
   setup() {
     const leftDrawerOpen = ref(false)
 

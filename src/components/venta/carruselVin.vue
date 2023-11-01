@@ -1,4 +1,3 @@
-
 <template>
   <div class="q-pa-md">
     <div class="row justify-around">
@@ -22,11 +21,8 @@
       <div class="col-4">
         <!-- Contenido de la segunda columna -->
         <h6>{{ titulo }}</h6>
-
         <h4><strong>{{ precio }}</strong></h4>
-
         <q-btn color="primary">Comprar</q-btn>
-
         <q-card style="outline: auto" class="q-ma-md">
           <h5>Vendedor: {{ vendedor }} Teléfono: {{ telefono }}</h5>
         </q-card>
@@ -36,7 +32,7 @@
 </template>
 
 <script>
-import { ref, defineProps } from "vue";
+import { ref, defineProps, watch } from "vue";
 
 export default {
   props: {
@@ -46,8 +42,24 @@ export default {
     vendedor: String,
     telefono: String,
   },
-  setup() {
+  setup(props) {
     const slide = ref(1); // Definimos la variable 'slide'
+
+    // Configura un temporizador para cambiar automáticamente el carrusel
+    const startCarousel = () => {
+      setInterval(() => {
+        slide.value = (slide.value % props.images.length) + 1;
+      }, 3000); // Cambiar cada 3 segundos (ajusta el valor según tus preferencias)
+    };
+
+    // Observa cuando las imágenes cambian para reiniciar el temporizador
+    watch(props.images, () => {
+      clearInterval(startCarousel);
+      startCarousel();
+    });
+
+    // Inicia el carrusel automáticamente
+    startCarousel();
 
     return {
       slide,
@@ -64,4 +76,3 @@ export default {
   max-height: 700px; /* Personaliza el alto según tus necesidades */
 }
 </style>
-
