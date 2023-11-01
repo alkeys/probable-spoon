@@ -1,5 +1,10 @@
+
+
+
+
+
 <template>
-  <div class="q-gutter-md q-mb-md text-center" style="width: 100%; padding: 1vh" @click="hacerAlgo(title)">
+  <div class="q-gutter-md q-mb-md text-center" style="width: 100%; padding: 1vh" @click="hacerAlgo(pos)">
     <div class="card-container">
       <q-card class="q-mb-md q-mb-auto small-card card-container" style="background-color: #fffffe;">
         <q-img :src="urlImg" class="q-pa-md image-size">
@@ -58,6 +63,11 @@
 export default {
   name: 'CardsImg',
   props: {
+    pos:{
+      type: Number,
+      default: 0
+    }
+    ,
     title: {
       type: String,
       default: 'Title'

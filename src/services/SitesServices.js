@@ -45,20 +45,17 @@ export const SitesServices = () => {
     const citiesCol = collection(db, nameCollection);
     const citySnapshot = await getDocs(citiesCol);
 
-    const cityList = await Promise.all(citySnapshot.docs.map(async (doc) => {
+    const dataList = await Promise.all(citySnapshot.docs.map(async (doc) => {
       const docData = doc.data();
-      const image = [];
 
       try {
-        const images = await getImageByDoc(nameCollection, doc.id);
-        image.push(images);
       } catch (error) {
         console.log(error);
       }
-      return {...docData, id: doc.id, imagenes: image};
+      return {...docData, id: doc.id};
     }));
 
-    return cityList;
+    return dataList;
   }
 
   async function getSitesByStateWhere(key, value, colleccion) {
