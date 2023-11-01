@@ -76,6 +76,8 @@ import CaracteristicasyEstados from "components/anuncio/caracteristicasyEstados.
 <script>
 
 
+import {SitesServices} from "src/services/SitesServices";
+
 export default {
   name: "frontGranderanuncio",
   props: {
@@ -90,26 +92,21 @@ export default {
 
       const input = document.createElement("input");
       input.type = "file";
-      input.accept = "image/*"; // Asegura que solo se puedan seleccionar imágenes
+      input.accept = "image/*";
 
       input.addEventListener("change", (event) => {
         const files = event.target.files;
 
         if (files.length > 0) {
-          const file = files[0]; // Suponemos que se selecciona solo una imagen
-
-          // Puedes cargar la imagen a tu servidor o almacenarla en un arreglo
-          // Por ejemplo, si deseas almacenar la imagen en el arreglo `images`:
+          const file = files[0];
           const reader = new FileReader();
 
           reader.onload = (e) => {
             this.images.push(e.target.result); // Agrega la imagen al arreglo
           };
-
           reader.readAsDataURL(file);
         }
       });
-
       input.click(); // Abre el campo de entrada de archivo
     },
     quitarImagen(index) {
@@ -128,7 +125,10 @@ export default {
     enviar() {
       this.traerDatos()
       this.objData = {...this.formData1, ...this.formData2, images: this.images}//creando objeto para enviar abase de datos xd
-   console.log(this.objData)
+      console.log(this.objData)
+      SitesServices().nuevoDoc(this.objData, "DataTelefonos")
+      //Metodo para subir datos a la base de datos
+
     },
 
 
