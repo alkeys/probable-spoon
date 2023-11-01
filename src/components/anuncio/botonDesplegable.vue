@@ -1,7 +1,3 @@
-
-
-
-
 <template>
   <div class="q-pa-md">
     <label for="text-input" style="margin-right: 10px;">{{ nombre }}</label>
@@ -39,6 +35,9 @@ export default {
     }, nombrecaja: {
       type: String,
       default: "Selecciona un sistema",
+    }, onChanges: {
+      type: Function,
+      required: false,
     },
   },
   data() {
@@ -48,9 +47,14 @@ export default {
     };
   },
   methods: {
+    emitValor() {
+      const text = this.sistemaSeleccionado
+      this.onChanges(text,this.nombre);
+    },
     onItemClick(sistema) {
       this.sistemaSeleccionado = sistema;
       this.labelLocal = sistema; // Modificar la copia local en lugar de la prop
+      this.emitValor();
     },
   },
 };
