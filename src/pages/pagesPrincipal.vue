@@ -12,6 +12,7 @@
 
 
 <script>
+console.clear()
 import { ref, onMounted } from 'vue';
 import { SitesServices } from "src/services/SitesServices";
 import Swal from 'sweetalert2'; // Importar SweetAlert2
@@ -52,7 +53,6 @@ export default {
 
         const data = await SitesServices().getAllDocs("DataTelefonos");
         objData.value = data;
-        console.log(objData.value);
 
         // Ocultar la ventana emergente de carga una vez que se obtienen los datos
         Swal.close();
@@ -71,4 +71,5 @@ export default {
     };
   }
 };
+
 </script>

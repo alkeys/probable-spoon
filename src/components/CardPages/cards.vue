@@ -60,6 +60,8 @@
 
 
 <script>
+import {LocalStorage} from "quasar";
+
 export default {
   name: 'CardsImg',
   props: {
@@ -83,6 +85,9 @@ export default {
     urlImg: {
       type: String,
       default: "https://cdn.quasar.dev/img/parallax2.jpg"
+    },
+    objtelefono: {
+      type: Object,
     }
   },
   computed: {
@@ -94,8 +99,9 @@ export default {
     }
   },
   methods: {
-    hacerAlgo(nombre) {
-      console.log(`Has hecho clic en la tarjeta ${nombre}`);
+    hacerAlgo(i) {
+      const dato=this.objtelefono[i];
+      LocalStorage.set('dataTel',dato);
       this.$router.push('ventascelulares');
     }
   }
