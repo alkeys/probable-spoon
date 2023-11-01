@@ -59,7 +59,7 @@ import CaracteristicasyEstados from "components/anuncio/caracteristicasyEstados.
           <BotonCajacard :funcion="recolectarValor" nombre="Precio"></BotonCajacard>
           <div class="flex q-mt-md q-mt-md-md text-center q-ml-lg"> <!-- Agregamos clases de margen responsivo -->
             <boton-pro tipo-icono="cancel" :funcion="inicio" color="secondary" nombre="Cancelar"></boton-pro>
-            <boton-pro tipo-icono="save" :funcion="enviar" color="secondary" class="q-ml-md" nombre="Crear"></boton-pro>
+            <boton-pro tipo-icono="save" :funcion="mostrarConfirmacion" color="secondary" class="q-ml-md" nombre="Crear"></boton-pro>
           </div>
         </div>
       </div>
@@ -77,6 +77,7 @@ import CaracteristicasyEstados from "components/anuncio/caracteristicasyEstados.
 
 
 import {SitesServices} from "src/services/SitesServices";
+import Swal from "sweetalert2";
 
 export default {
   name: "frontGranderanuncio",
@@ -84,6 +85,36 @@ export default {
     funcionA: Function, // Declara la función como prop
   },
   methods: {
+    async EnviadoPapus() {
+     await Swal.fire({
+        title: "¡Enviado!",
+        text: "Los datos han sido enviados correctamente.",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+
+      });
+
+
+      setTimeout(() => {
+        this.$router.push('/');
+      }, 200);
+    },
+    async mostrarConfirmacion() {
+      const {value: isConfirmed} = await Swal.fire({
+        title: "Guardando Anuncio",
+        text: "¿Está seguro de que los datos son correctos?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí",
+        cancelButtonText: "No",
+      });
+
+      if (isConfirmed) {
+        this.enviar();
+      } else {
+
+      }
+    },
     inicio() {
 
       this.$router.push('/');
@@ -128,7 +159,7 @@ export default {
       console.log(this.objData)
       SitesServices().nuevoDoc(this.objData, "DataTelefonos")
       //Metodo para subir datos a la base de datos
-
+      this.EnviadoPapus();
     },
 
 
@@ -164,6 +195,7 @@ export default {
         Rom: "",
         RAM: "",
       },
+      confirmar: false,
       images: [], // Un arreglo para almacenar las imágenes
       datosEstado: [
         {
