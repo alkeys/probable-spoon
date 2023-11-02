@@ -13,7 +13,7 @@ import CheckboxGrupo from "components/botones/checkboxGrupo.vue";
 
     <div class="flex q-pl-md" style="margin: 0; display: flex; align-items: center">
       <p style="margin: 0">Estado:</p>
-      <checkbox-grupo   :onChanges="recolectarValor" class="q-mt-auto" :options="datosEstado"></checkbox-grupo>
+      <checkbox-grupo  nombre="Estado" :onChanges="recolectarValor" class="q-mt-auto" :options="datosEstado"></checkbox-grupo>
     </div>
 
     <div class="q-pb-md flex" style="flex-direction: row">

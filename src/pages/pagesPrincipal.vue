@@ -24,6 +24,7 @@ export default {
   components: {FilterPages, CardPages},
   setup() {
     const objData = ref({
+      Estado:"",
       Marca: "",
       Modelo: "",
       Pantalla: "",
