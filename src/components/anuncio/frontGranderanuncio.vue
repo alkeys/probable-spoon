@@ -167,6 +167,7 @@ export default {
   data() {
     return {
       objData: {
+        Estado:"",
         Marca: "",
         Modelo: "",
         Pantalla: "",
