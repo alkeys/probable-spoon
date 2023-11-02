@@ -13,7 +13,7 @@
           </div>
         </q-img>
         <q-card-section>
-          <p style="color: #2e2f3e">{{ precio }}</p>
+          <p style="color: #2e2f3e">${{ precio }}</p>
           {{ data }}
         </q-card-section>
         <q-tooltip class="bg-accent" :offset="[10, 10]">

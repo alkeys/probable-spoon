@@ -21,7 +21,7 @@
       <div class="col-4">
         <!-- Contenido de la segunda columna -->
         <h6>{{ titulo }}</h6>
-        <h4><strong>{{ precio }}</strong></h4>
+        <h4><strong>${{ precio }}</strong></h4>
         <q-btn color="primary">Comprar</q-btn>
         <q-card style="outline: auto" class="q-ma-md">
           <h5>Vendedor: {{ vendedor }} Teléfono: {{ telefono }}</h5>
