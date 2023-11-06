@@ -1,16 +1,13 @@
-
-
-
 <template>
-  <div class="q-pa-md row items-start q-gutter-md">
-    <q-card class="my-card card1">
+  <div class="q-pa-md row justify-center items-start q-gutter-md">
+    <q-card class="my-card">
       <q-card-section>
-        {{ lorem }}
+        {{ card1Content }}
       </q-card-section>
     </q-card>
-    <q-card class="my-card card2">
+    <q-card class="my-card">
       <q-card-section>
-        {{ otherContent }}
+        {{ card2Content }}
       </q-card-section>
     </q-card>
   </div>
@@ -20,26 +17,25 @@
 export default {
   setup() {
     return {
-      lorem: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-      otherContent: "Contenido diferente para la segunda tarjeta...",
+      card1Content: "Contenido de la primera tarjeta...",
+      card2Content: "Contenido de la segunda tarjeta...",
     };
   },
 };
 </script>
 
-<style lang="sass" scoped>
-.card1
-  margin-top: 10px
-  margin-left: 640px
-  width: 300%
-  height: 250px
-  max-width: 300px
+<style scoped>
+.my-card {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100%;
+  height: 250px;
+}
 
-.card2
-  /* Estilos específicos para la segunda tarjeta */
-  margin-top: 10px
-  margin-left: 25px
-  width: 300%
-  height: 250px
-  max-width: 300px
+@media (min-width: 768px) {
+  .my-card {
+    width: 48%; /* Reduzco el ancho para dar espacio entre las tarjetas en pantallas grandes */
+    margin: 1%; /* Agrego un margen entre las tarjetas */
+  }
+}
 </style>
