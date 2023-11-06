@@ -1,27 +1,29 @@
 <template>
   <div class="q-pa-md">
-    <div class="row justify-around">
-      <div class="col-4">
+    <div class="row justify-around q-gutter-md">
+      <div class="col-12 col-md-6 col-lg-4">
         <q-carousel
-            animated
-            v-model="slide"
-            arrows
-            navigation
-            infinite
-            class="carousel-mediano"
+          animated
+          v-model="slide"
+          arrows
+          navigation
+          infinite
+          class="carousel-mediano"
         >
           <q-carousel-slide
-              v-for="(image, index) in images"
-              :key="index"
-              :name="index + 1"
-              :img-src="image"
+            v-for="(image, index) in images"
+            :key="index"
+            :name="index + 1"
+            :img-src="image"
           />
         </q-carousel>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <!-- Contenido de la segunda columna -->
         <h6>{{ titulo }}</h6>
-        <h4><strong>${{ precio }}</strong></h4>
+        <h4>
+          <strong>${{ precio }}</strong>
+        </h4>
         <q-btn color="primary">Comprar</q-btn>
         <q-card style="outline: auto" class="q-ma-md">
           <h5>Vendedor: {{ vendedor }} Teléfono: {{ telefono }}</h5>
