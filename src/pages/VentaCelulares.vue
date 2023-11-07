@@ -8,7 +8,7 @@
       :vendedor="objData.Vendedor"
     ></CarruselVin>
     <div class="custom-text">
-      <h5>{{ objData.Descrip }}</h5>
+      <h5>DESCRIPCION</h5>
     </div>
     <CardInfo></CardInfo>
   </q-page>
