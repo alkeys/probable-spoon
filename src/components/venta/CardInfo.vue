@@ -7,18 +7,41 @@
     </q-card>
     <q-card class="my-card">
       <q-card-section>
-        {{ card2Content }}
+        {{ objData.Descrip }}
       </q-card-section>
     </q-card>
   </div>
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
+import { LocalStorage } from "quasar";
+import Swal from "sweetalert2";
+
 export default {
   setup() {
+    const objData = ref({
+      Descrip: "Contenido de la segunda tarjeta dinámico...", // Valor inicial por si no se encuentra en LocalStorage
+    });
+
+    onMounted(async () => {
+      try {
+        const data = LocalStorage.getItem("dataTel");
+        console.log("Data from LocalStorage:", data);
+        if (data) {
+          objData.value = data;
+        }
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        Swal.close();
+      }
+    });
+
+    const card1Content = "Contenido de la primera tarjeta...";
+
     return {
-      card1Content: "Contenido de la primera tarjeta...",
-      card2Content: "Contenido de la segunda tarjeta...",
+      objData,
+      card1Content,
     };
   },
 };
@@ -34,8 +57,8 @@ export default {
 
 @media (min-width: 768px) {
   .my-card {
-    width: 48%; /* Reduzco el ancho para dar espacio entre las tarjetas en pantallas grandes */
-    margin: 1%; /* Agrego un margen entre las tarjetas */
+    width: 48%;
+    margin: 1%;
   }
 }
 </style>
