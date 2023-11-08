@@ -21,7 +21,13 @@ import Swal from "sweetalert2";
 export default {
   setup() {
     const objData = ref({
-      Descrip: "Contenido de la segunda tarjeta dinámico...", // Valor inicial por si no se encuentra en LocalStorage
+      Marca: "",
+      Modelo: "",
+      Pantalla: "",
+      Sistema: "",
+      Rom: "",
+      RAM: "",
+      Descrip: "Contenido de la segunda tarjeta dinámico...",
     });
 
     onMounted(async () => {
@@ -37,7 +43,14 @@ export default {
       }
     });
 
-    const card1Content = "Contenido de la primera tarjeta...";
+    const card1Content = `
+  Marca: ${objData.value.Marca}<br>
+  Modelo: ${objData.value.Modelo}<br>
+  Pantalla: ${objData.value.Pantalla}<br>
+  Sistema: ${objData.value.Sistema}<br>
+  Rom: ${objData.value.Rom}<br>
+  RAM: ${objData.value.RAM}
+`;
 
     return {
       objData,
