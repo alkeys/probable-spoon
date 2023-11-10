@@ -28,7 +28,7 @@
 .image-size {
   width: 200px;
   height: 200px; /* Establece la altura deseada para todas las imágenes */
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .textSize {
@@ -56,6 +56,7 @@
   align-items: stretch;
   min-height: 400px; /* Ajusta la altura mínima según tu necesidad */
 }
+
 </style>
 
 

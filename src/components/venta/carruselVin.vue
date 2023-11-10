@@ -8,14 +8,16 @@
           arrows
           navigation
           infinite
+          :duration="500"
           class="carousel-mediano"
         >
           <q-carousel-slide
             v-for="(image, index) in images"
             :key="index"
             :name="index + 1"
-            :img-src="image"
-          />
+          >
+            <img :src="image" class="carousel-image" alt="Carousel Image" />
+          </q-carousel-slide>
         </q-carousel>
       </div>
       <div class="col-12 col-md-6 col-lg-4">
@@ -32,6 +34,21 @@
     </div>
   </div>
 </template>
+
+<style>
+.carousel-mediano {
+  border: 5px solid #ccc; /* Establece el borde según tus preferencias */
+  margin-top: 10px;
+  width: 700px; /* Personaliza el ancho según tus necesidades */
+  max-height: 700px; /* Personaliza el alto según tus necesidades */
+}
+
+.carousel-image {
+  width: 100%; /* Hace que la imagen ocupe el 100% del contenedor */
+  height: 100%; /* Hace que la imagen ocupe el 100% del contenedor */
+  object-fit: contain; /* Ajusta la imagen para que se ajuste completamente */
+}
+</style>
 
 <script>
 import { ref, defineProps, watch } from "vue";
@@ -70,11 +87,3 @@ export default {
 };
 </script>
 
-<style>
-.carousel-mediano {
-  border: 5px solid #ccc; /* Establece el borde según tus preferencias */
-  margin-top: 10px;
-  width: 700px; /* Personaliza el ancho según tus necesidades */
-  max-height: 700px; /* Personaliza el alto según tus necesidades */
-}
-</style>
