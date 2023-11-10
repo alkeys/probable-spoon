@@ -91,7 +91,7 @@ export default {
 
       setTimeout(() => {
         this.$router.push('/');
-      }, 200);
+      }, 100);
     },
     async mostrarConfirmacion() {
       const {value: isConfirmed} = await Swal.fire({

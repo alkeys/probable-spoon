@@ -1,49 +1,61 @@
-
-
-
-
-
 <template>
   <q-page>
     <FilterPages></FilterPages>
-    <CardPages :mi-objeto="objData" class="mobi"></CardPages>
+    <CardPages :mi-objeto="objDataFiltrado" class="mobi"></CardPages>
   </q-page>
 </template>
 
-
 <script>
-console.clear()
-import { ref, onMounted } from 'vue';
-import { SitesServices } from "src/services/SitesServices";
-import Swal from 'sweetalert2'; // Importar SweetAlert2
+import {ref, onMounted, onBeforeUnmount, computed} from 'vue';
+import {SitesServices} from "src/services/SitesServices";
+import Swal from 'sweetalert2';
 import CardPages from "pages/CardPages.vue";
 import FilterPages from "pages/filterPages.vue";
-
+import store from "src/store";
+import {LocalStorage} from "quasar";
 
 export default {
   components: {FilterPages, CardPages},
   setup() {
+
     const objData = ref({
-      Estado:"",
-      Marca: "",
-      Modelo: "",
-      Pantalla: "",
-      Sistema: "",
-      Rom: "",
-      RAM: "",
-      Titulo: "",
-      Vendedor: "",
-      Tel: "",
-      Descrip: "",
-      Precio: "",
-      images: [],
+      filter: {
+        marca: "",
+        sistema: "",
+        estado: "",
+        pantalla: "",
+      },
     });
 
-    const loading = ref(true); // Variable de carga
+    const objDataFiltrado = ref({});
+    const loading = ref(true);
+
+    const filtrarDatos = () => {
+      console.clear()
+      const filtro = {  };
+      filtro["marca"] = store.state.filteredData.marca
+      filtro["sistema"] = store.state.filteredData.sistema
+      filtro["estado"] = store.state.filteredData.estado
+      filtro["pantalla"] = store.state.filteredData.pantalla
+
+
+      const datosFiltrados = Object.values(objData.value).filter((item) => {
+        return (
+            (!filtro.marca || item.Marca.toLowerCase().includes(filtro.marca.toLowerCase())) &&
+            (!filtro.sistema || item.Sistema.toLowerCase().includes(filtro.sistema.toLowerCase())) &&
+            (!filtro.estado || item.Estado.toLowerCase().includes(filtro.estado.toLowerCase())) &&
+            (!filtro.pantalla || item.Pantalla.toLowerCase().includes(filtro.pantalla.toLowerCase()))
+        );
+      });
+      const pantallasFiltradas = [...new Set(datosFiltrados.map(item => item.Pantalla))];
+      objDataFiltrado.value = datosFiltrados;
+    };
 
     onMounted(async () => {
+      LocalStorage.clear()
+
+      const intervalId = setInterval(filtrarDatos, 2000);
       try {
-        // Mostrar la ventana emergente de carga
         Swal.fire({
           title: 'Cargando...',
           allowOutsideClick: false,
@@ -54,23 +66,27 @@ export default {
 
         const data = await SitesServices().getAllDocs("DataTelefonos");
         objData.value = data;
+        objDataFiltrado.value = data;
 
-        // Ocultar la ventana emergente de carga una vez que se obtienen los datos
         Swal.close();
-
-        loading.value = false; // Establecer loading en false cuando se obtienen los datos
+        loading.value = false;
       } catch (error) {
         console.error("Error al obtener los datos:", error);
-        // Cerrar la ventana emergente de carga en caso de error
         Swal.close();
       }
+
+      // Limpiar el intervalo cuando el componente se destruye
+      onBeforeUnmount(() => {
+        clearInterval(intervalId);
+      });
     });
+
 
     return {
       objData,
-      loading, // Agregar loading a los valores retornados
+      objDataFiltrado,
+      loading,
     };
   }
 };
-
 </script>

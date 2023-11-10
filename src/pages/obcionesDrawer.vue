@@ -10,8 +10,8 @@ import {dataTelefonos} from "src/data/dataTelefonos";
 
     <div class="text-left q-pl-md">
       <BotonDrawer></BotonDrawer>
-      <caja-marcas nombre="Marcas" :options="dataTelefonos.marcaData"></caja-marcas>
-      <caja-marcas nombre="Sistemas" :options="dataTelefonos.sistemasData"></caja-marcas>
+      <caja-marcas nombre="Marca" :options="dataTelefonos.marcaData"></caja-marcas>
+      <caja-marcas nombre="Sistema" :options="dataTelefonos.sistemasData"></caja-marcas>
       <caja-marcas nombre="Pantalla" :options="dataTelefonos.PantallaData"></caja-marcas>
     </div>
   </div>

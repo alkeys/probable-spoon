@@ -8,7 +8,7 @@
       <q-toolbar>
 
         <div class="flex" style="max-width: 20%">
-          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"/>
+
           <titulo-ico style="position: relative"></titulo-ico>
         </div>
         <menu-pro></menu-pro>

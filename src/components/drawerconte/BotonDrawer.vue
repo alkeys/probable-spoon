@@ -5,10 +5,11 @@
 <template>
   <div>
     <q-toggle
-      v-model="dense"
-      label="nuevo"
-      @change="animateToggle"
-      :class="{ 'animate': isAnimating }"
+        v-model="dense"
+        label="nuevo"
+        @change="animateToggle"
+        @click="toggleChange"
+        :class="{ 'animate': isAnimating }"
     />
   </div>
 </template>
@@ -22,6 +23,35 @@ export default {
     };
   },
   methods: {
+    toggleChange() {
+      if (!this.dense) {
+        // La función se activa cuando el toggle se desactiva
+        this.desactivado();
+      } else {
+        // La función se activa cuando el toggle se activa
+        this.activado();
+      }
+    },
+    activado() {
+      const filtrolocal = {
+        marca: "",
+        sistema: "",
+        estado: "",
+        pantalla: "",
+      };
+      filtrolocal["estado"] = "nuevo";
+      this.$store.dispatch('emitFiltrarDatos', filtrolocal);
+    },
+    desactivado() {
+      const filtrolocal = {
+        marca: "",
+        sistema: "",
+        estado: "",
+        pantalla: "",
+      };
+      filtrolocal["estado"] = "";
+      this.$store.dispatch('emitFiltrarDatos', filtrolocal);
+    },
     animateToggle() {
       this.isAnimating = true;
       setTimeout(() => {

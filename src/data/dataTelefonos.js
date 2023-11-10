@@ -19,6 +19,11 @@ export const dataTelefonos = {
       label: 'Xiaomi',
       value: 'xiaomi',
       color: 'orange' // Agregué un color para Xiaomi (puedes usar cualquier color)
+    },
+    {
+      label: 'Apple',
+      value: 'apple',
+      color: '' // Agregué un color para Xiaomi (puedes usar cualquier color)
     }
   ],
   sistemasData: [
@@ -28,15 +33,10 @@ export const dataTelefonos = {
       color: 'green' // Color para Android (puedes usar cualquier color)
     },
     {
-      label: 'Windows',
-      value: 'Windows',
+      label: 'Ios',
+      value: 'Ios',
       color: 'blue' // Color para Windows (puedes usar cualquier color)
     },
-    {
-      label: 'iOS',
-      value: 'iOS',
-      color: 'purple' // Color para iOS (puedes usar cualquier color)
-    }
   ],
   PantallaData: [
     {
