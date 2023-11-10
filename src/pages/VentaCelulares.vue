@@ -1,16 +1,13 @@
+
+
 <template>
   <q-page>
-    <CarruselVin
-      :images="objData.images"
-      :precio="objData.Precio"
-      :telefono="objData.Tel"
-      :titulo="objData.Titulo"
-      :vendedor="objData.Vendedor"
-    ></CarruselVin>
+    <CarruselVin v-bind="objData"></CarruselVin>
     <div class="custom-text">
       <h5>DESCRIPCION</h5>
     </div>
-    <CardInfo></CardInfo>
+    <CardInfo v-bind="objData"></CardInfo>
+
   </q-page>
 </template>
 
@@ -26,16 +23,20 @@
 </style>
 
 <script>
-import CarruselVin from "components/venta/carruselVin.vue";
-import CardInfo from "components/venta/CardInfo.vue";
-import { onMounted, ref } from "vue";
+
+
+import {LocalStorage} from "quasar";
+import {onMounted, ref} from "vue";
 import Swal from "sweetalert2";
-import { LocalStorage } from "quasar";
+import CardInfo from "components/venta/CardInfo.vue";
+import CarruselVin from "components/venta/carruselVin.vue";
 
 export default {
-  components: { CardInfo, CarruselVin },
+  components: {CarruselVin, CardInfo},
+
   setup() {
     const objData = ref({
+      Estado:"",
       Marca: "",
       Modelo: "",
       Pantalla: "",
@@ -53,7 +54,6 @@ export default {
     onMounted(async () => {
       try {
         const data = LocalStorage.getItem("dataTel");
-        console.log("Data from LocalStorage:", data); // Agrega este log
         if (data) {
           objData.value = data;
         }

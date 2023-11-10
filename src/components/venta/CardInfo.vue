@@ -1,64 +1,43 @@
 <template>
   <div class="q-pa-md row justify-center items-start q-gutter-md">
-    <q-card class="my-card">
+    <q-card class="my-card" style="height: auto;">
       <q-card-section>
-        {{ card1Content }}
+        <CaracteristicasTelefono :estado="Estado"
+                                 :marca="Marca"
+                                 :modelo="Modelo"
+                                 :pantalla="Pantalla"
+                                 :ram="RAM"
+                                 :rom="Rom"
+                                 :sistema="Sistema"
+        ></CaracteristicasTelefono>
       </q-card-section>
     </q-card>
     <q-card class="my-card">
       <q-card-section>
-        {{ objData.Descrip }}
+        {{ Descrip }}
       </q-card-section>
     </q-card>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
-import { LocalStorage } from "quasar";
-import Swal from "sweetalert2";
+import CaracteristicasTelefono from "components/venta/CaracteristicasTel.vue";
 
 export default {
-  setup() {
-    const objData = ref({
-      Marca: "",
-      Modelo: "",
-      Pantalla: "",
-      Sistema: "",
-      Rom: "",
-      RAM: "",
-      Descrip: "Contenido de la segunda tarjeta dinámico...",
-    });
-
-    onMounted(async () => {
-      try {
-        const data = LocalStorage.getItem("dataTel");
-        console.log("Data from LocalStorage:", data);
-        if (data) {
-          objData.value = data;
-        }
-      } catch (error) {
-        console.error("Error al obtener los datos:", error);
-        Swal.close();
-      }
-    });
-
-    const card1Content = `
-  Marca: ${objData.value.Marca}<br>
-  Modelo: ${objData.value.Modelo}<br>
-  Pantalla: ${objData.value.Pantalla}<br>
-  Sistema: ${objData.value.Sistema}<br>
-  Rom: ${objData.value.Rom}<br>
-  RAM: ${objData.value.RAM}
-`;
-
-    return {
-      objData,
-      card1Content,
-    };
-  },
+  components: {CaracteristicasTelefono},
+  props: {
+    Estado: String,
+    Marca: String,
+    Modelo: String,
+    Pantalla: String,
+    Sistema: String,
+    Rom: String,
+    RAM: String,
+    Descrip: String,
+  }
 };
 </script>
+
 
 <style scoped>
 .my-card {

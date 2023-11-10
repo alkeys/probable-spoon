@@ -20,8 +20,8 @@ import CheckboxGrupo from "components/botones/checkboxGrupo.vue";
       <inputData :onChanges="recolectarValor" nombre="Marca"></inputData>
       <inputData :onChanges="recolectarValor" nombre="Modelo"></inputData>
       <inputData :onChanges="recolectarValor" nombre="Pantalla" info="Pulgadas" tipo-data="number"></inputData>
-
-      <boton-desplegable :onChanges="recolectarValor"  nombre="Sistema:"></boton-desplegable>
+:
+      <boton-desplegable :onChanges="recolectarValor"  nombre="Sistema"></boton-desplegable>
       <div class="ocultarCosa">
         <inputData :onChanges="recolectarValor" nombre="Rom" info="Almacenamiento interno" sufijo-tipo="GB"
                    tipo-data="number"></inputData>

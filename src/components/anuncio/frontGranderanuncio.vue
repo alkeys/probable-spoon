@@ -69,13 +69,7 @@ import CaracteristicasyEstados from "components/anuncio/caracteristicasyEstados.
   </q-page>
 </template>
 
-
-<style scoped>
-
-</style>
 <script>
-
-
 import {SitesServices} from "src/services/SitesServices";
 import Swal from "sweetalert2";
 
