@@ -23,7 +23,7 @@ export const dataTelefonos = {
     {
       label: 'Apple',
       value: 'apple',
-      color: '' // Agregué un color para Xiaomi (puedes usar cualquier color)
+      color: 'purple' // Agregué un color para Xiaomi (puedes usar cualquier color)
     }
   ],
   sistemasData: [
